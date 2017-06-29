@@ -1,0 +1,33 @@
+
+
+converting the file into the , seerated 
+
+
+ tr '\t' ',' <'olympix_data.csv'> 'olympic_data.csv'
+------------------------------------------------------------------------------------------------------------------------------
+creating table for loading 
+
+create table olympic_data(name String,age int ,country String,year int,cdate Date, event String,gold int,silver int,bronz int ,tot int)
+             row format delimited fields terminated by ',' lines terminated by '\n' stored as textfile ;
+             
+        ------------------------------------------------------------------------------------------------------------------------------
+ Loading date into table
+ 
+ load data local inpath 'olympics_data.txt' into table olympic_data;
+     ------------------------------------------------------------------------------------------------------------------------------
+     
+     
+    ( a)
+    
+    sol : select country ,sum(tot) from olympic_data where event = 'swimming' group by country;
+ 
+  ------------------------------------------------------------------------------------------------------------------------------
+  b)
+  sol :select year,sum(tot) from olympic_data where country = 'india' group by year
+  
+  ------------------------------------------------------------------------------------------------------------------------------
+  c)
+  solution: select country,sum(tot) from olympic_data group by country ;
+ ------------------------------------------------------------------------------------------------------------------------------
+ d)
+  sol : select country,sum(gold) from olympic_data group by country ;
